@@ -1,10 +1,61 @@
-.header-script-extender-error-check, .cell-script-extender-error-check {
-  text-align: center;
-  > .icon {
-    color: $brand-warning;
+@import "details";
+
+.script-extender-error-check {
+  .error-list {
+    margin-top: $half-gutter;
+    border: $border-width solid $border-color;
+    border-radius: $border-radius-base;
   }
 
-  .toggle-container {
-    justify-content: center;
+  .error-entry {
+    padding: $half-gutter;
+    border-bottom: $border-width solid $border-color;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &.critical {
+      background-color: rgba($brand-danger, 0.1);
+      border-left: 3px solid $brand-danger;
+    }
+
+    &.warning {
+      background-color: rgba($brand-warning, 0.1);
+      border-left: 3px solid $brand-warning;
+    }
+
+    &.info {
+      background-color: rgba($brand-info, 0.1);
+      border-left: 3px solid $brand-info;
+    }
+  }
+
+  .error-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: $half-gutter;
+  }
+
+  .error-title {
+    font-weight: bold;
+  }
+
+  .error-timestamp {
+    color: $text-color-disabled;
+    font-size: 0.9em;
+  }
+
+  .error-description {
+    margin-top: $half-gutter;
+    margin-bottom: $half-gutter;
+    white-space: pre-wrap;
+  }
+
+  .error-actions {
+    display: flex;
+    gap: $half-gutter;
+    margin-top: $half-gutter;
   }
 }
