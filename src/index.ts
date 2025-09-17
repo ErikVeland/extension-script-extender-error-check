@@ -117,7 +117,7 @@ async function checkForErrors(api: types.IExtensionApi) {
       }
     } catch (err) {
       log(err.code === 'ENOENT' ? 'info' : 'error',
-        'Failed to check for script extender errors', err.message);
+          'Failed to check for script extender errors', err.message);
     }
   }));
 
@@ -132,7 +132,7 @@ async function checkForErrors(api: types.IExtensionApi) {
       //  depending on whether it's our responsibility to fix it.
       const isNonActionable = ['ENOENT', 'EIO', 'EPERM'].indexOf(err.code) !== -1;
       log(isNonActionable ? 'info' : 'error',
-        'Failed to retrieve manifest information', err.message);
+          'Failed to retrieve manifest information', err.message);
       return false;
     }
 
@@ -172,13 +172,13 @@ async function checkForErrors(api: types.IExtensionApi) {
           + (((Date.now() - logTime.getTime()) > ONE_HOUR)
             ? '[color=red]Reported {{logTime}}.[/color]<br/><br/>'
             : 'Reported {{logTime}}.<br/><br/>'), { replace: {
-              logPath: path.dirname(errLog.errLogFile),
-              logName: path.basename(errLog.errLogFile),
-              logPathURI: url.pathToFileURL(path.dirname(errLog.errLogFile)),
-              logURI: url.pathToFileURL(errLog.errLogFile),
-              pathSep: path.sep,
-              logTime: util.relativeTime(logTime, api.translate),
-            }});
+        logPath: path.dirname(errLog.errLogFile),
+        logName: path.basename(errLog.errLogFile),
+        logPathURI: url.pathToFileURL(path.dirname(errLog.errLogFile)),
+        logURI: url.pathToFileURL(errLog.errLogFile),
+        pathSep: path.sep,
+        logTime: util.relativeTime(logTime, api.translate),
+      }});
     };
     api.sendNotification({
       id: 'script-extender-errors',
@@ -198,10 +198,10 @@ async function checkForErrors(api: types.IExtensionApi) {
                 + 'plugin or disable the mod until it is updated.<br/><br/>'
                 + 'Error(s) reported:'
                 + '<br/>', {
-                  replace: {
-                    errorInformation: errorInstances.map(buildLogErrorString),
-                  },
-                }) + errors.map(renderError).join('<br/>'),
+                replace: {
+                  errorInformation: errorInstances.map(buildLogErrorString),
+                },
+              }) + errors.map(renderError).join('<br/>'),
               options: {
                 bbcodeContext: {
                   allowLocal: true,
@@ -227,12 +227,12 @@ async function checkForErrors(api: types.IExtensionApi) {
 }
 
 const loadStatusMessages = [
-    'reported as incompatible during query',
-    'reported as incompatible during load',
-    'disabled, fatal error occurred while loading plugin',
-    'disabled, no name specified',
-    'disabled, fatal error occurred while checking plugin compatibility',
-    'disabled, fatal error occurred while querying plugin',
+  'reported as incompatible during query',
+  'reported as incompatible during load',
+  'disabled, fatal error occurred while loading plugin',
+  'disabled, no name specified',
+  'disabled, fatal error occurred while checking plugin compatibility',
+  'disabled, fatal error occurred while querying plugin',
 ];
 
 function messageFromCode(input: number): string {

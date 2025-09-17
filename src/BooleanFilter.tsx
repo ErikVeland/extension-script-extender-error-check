@@ -3,7 +3,7 @@ import { Toggle, types } from 'vortex-api';
 
 class BooleanFilterComponent extends React.Component<types.IFilterProps, {}> {
   public render(): JSX.Element {
-    let { filter } = this.props;
+    const { filter } = this.props;
     return (
       <Toggle checked={filter} onToggle={this.changeFilter} />
     );
